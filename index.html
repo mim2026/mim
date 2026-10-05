@@ -34,13 +34,18 @@
             background-color: #0d0d1a;
             padding: 15px;
             border-radius: 10px;
-            margin: 20px auto 20px;
+            margin: 20px auto 10px;
             word-break: break-all;
             font-family: monospace;
             font-size: 1rem;
             color: #00d2ff;
             border: 1px solid rgba(0, 210, 255, 0.3);
             max-width: 400px;
+        }
+        .account-type {
+            font-size: 1rem;
+            color: #8a99ad;
+            margin-bottom: 20px;
         }
         button {
             background-color: #00d2ff;
@@ -69,11 +74,15 @@
         <h2>Destek Hesabı</h2>
         <p>Aşağıdaki butona basarak hesap numarasını otomatik olarak kopyalayabilirsiniz.</p>
 
-        <button onclick="copyToClipboard()">Adresi Kopyala</button>
-
         <div class="address-box">
             0x70034a784d852bb06de0f85514f76269b255df9c
         </div>
+        
+        <div class="account-type">
+            Robin Hood Yatırım Hesabı
+        </div>
+
+        <button onclick="copyToClipboard()">Adresi Kopyala</button>
     </div>
 
     <script>
