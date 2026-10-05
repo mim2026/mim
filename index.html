@@ -1,386 +1,63 @@
-<!DOCTYPE html><html><body><h1>mim</h1></body></html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>Bağış Yap</title>
-</head>
-<body>
-    <h1>Şirketimize Katkıda Bulunun</h1>
-    <p>Projelerimizi ve yapay zeka çalışmalarımızı desteklemek için kripto paralarınızla bağışta bulunabilir, şirketimize ortak olabilirsiniz.</p>
-    
-    <div>
-        <h2>Ethereum Bağış Adresi</h2>
-        <p><code>0x70034a784d852bb06de0f85514f76269b255df9c</code></p>
-        <button onclick="navigator.clipboard.writeText('0x70034a784d852bb06de0f85514f76269b255df9c')">Adresi Kopyala</button>
-    </div>
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Web Sitesi</title>
+    <title>Adresi Kopyala</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #71B280, #134E5E);
-            height: 100vh;
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-        }
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Hoş Geldiniz</h1>
-        <p>Dünyanın en iyi internet deneyimi burada başlıyor.</p>
-    </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kara Delik Efekti</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #000;
-            overflow: hidden;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        canvas {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            text-align: center;
-            pointer-events: none;
-        }
-        h1 {
-            font-size: 3rem;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #aaa;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="content">
-        <h1>Kara Delik</h1>
-        <p>Her şeyi içine çeken sonsuz çekim gücü...</p>
-    </div>
-
-    <canvas id="canvas"></canvas>
-
-    <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const numParticles = 800;
-        const particles = [];
-        const blackHole = {
-            x: width / 2,
-            y: height / 2,
-            radius: 50
-        };
-
-        window.addEventListener('mousemove', (e) => {
-            blackHole.x = e.clientX;
-            blackHole.y = e.clientY;
-            const content = document.querySelector('.content');
-            content.style.left = e.clientX + 'px';
-            content.style.top = e.clientY + 'px';
-        });
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 2 + 1;
-                this.color = `hsl(${Math.random() * 60 + 180}, 100%, 70%)`;
-                this.speedX = (Math.random() - 0.5) * 2;
-                this.speedY = (Math.random() - 0.5) * 2;
-            }
-
-            update() {
-                const dx = blackHole.x - this.x;
-                const dy = blackHole.y - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < blackHole.radius) {
-                    this.reset();
-                } else {
-                    const force = 1000 / (distance * distance);
-                    const angle = Math.atan2(dy, dx);
-                    
-                    this.speedX += Math.cos(angle) * force;
-                    this.speedY += Math.sin(angle) * force;
-
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < numParticles; i++) {
-            particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-            ctx.fillRect(0, 0, width, height);
-
-            // Kara Delik Olay Ufku
-            ctx.fillStyle = '#000';
-            ctx.shadowBlur = 30;
-            ctx.shadowColor = '#00d2ff';
-            ctx.beginPath();
-            ctx.arc(blackHole.x, blackHole.y, blackHole.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaksi ve Kara Delik Simülasyonu</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background-color: #020208;
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        canvas {
-            display: block;
-            width: 100vw;
             height: 100vh;
-        }
-        .overlay {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: 0;
+            background-color: #0d0d1a;
             color: #ffffff;
             text-align: center;
-            pointer-events: none;
-            z-index: 10;
         }
-        .overlay h1 {
-            font-size: 2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
+        .container {
+            background-color: #1a1a2e;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
         }
-        .overlay p {
-            font-size: 0.9rem;
-            color: #8a99ad;
-            margin-top: 5px;
+        button {
+            background-color: #00d2ff;
+            border: none;
+            color: #000000;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ffffff;
+            box-shadow: 0 0 15px #00d2ff;
         }
     </style>
 </head>
 <body>
 
-    <div class="overlay">
-        <h1>Galaktik Kara Delik</h1>
-        <p>Fareyi hareket ettirerek kara deliği yönlendirebilirsiniz</p>
+    <div class="container">
+        <h2>Destek Hesabı</h2>
+        <p>Aşağıdaki butona basarak hesap numarasını otomatik olarak kopyalayabilirsiniz.</p>
+        <button onclick="copyToClipboard()">Adresi Kopyala</button>
     </div>
 
-    <canvas id="space"></canvas>
-
     <script>
-        const canvas = document.getElementById('space');
-        const ctx = canvas.getContext('2d');
-
-        let w = canvas.width = window.innerWidth;
-        let h = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-            blackHole.x = w / 2;
-            blackHole.y = h / 2;
-        });
-
-        const blackHole = {
-            x: w / 2,
-            y: h / 2,
-            radius: 45
-        };
-
-        window.addEventListener('mousemove', (e) => {
-            blackHole.x = e.clientX;
-            blackHole.y = e.clientY;
-        });
-
-        // Yıldızlar ve Galaksi Parçacıkları
-        const particleCount = 1200;
-        const particles = [];
-
-        class GalaxyParticle {
-            constructor() {
-                this.init();
-            }
-
-            init() {
-                // Merkeze göre rastgele açı ve mesafe
-                this.angle = Math.random() * Math.PI * 2;
-                this.distance = Math.random() * (Math.max(w, h) * 0.8) + 60;
-                this.speed = (1 / this.distance) * 1.5 + Math.random() * 0.002;
-                
-                // Galaksi renk paleti (mavi, mor, turuncu, beyaz)
-                const colors = [
-                    'rgba(120, 190, 255, ',
-                    'rgba(200, 120, 255, ',
-                    'rgba(255, 180, 100, ',
-                    'rgba(255, 255, 255, '
-                ];
-                this.colorBase = colors[Math.floor(Math.random() * colors.length)];
-                this.size = Math.random() * 2 + 0.5;
-                this.alpha = Math.random() * 0.8 + 0.2;
-            }
-
-            update() {
-                // Dönme hareketi
-                this.angle += this.speed;
-
-                // Kara deliğe çekilme efekti
-                this.distance -= 0.3;
-
-                // Kara deliğin içine düşen parçacıkları sıfırla
-                if (this.distance <= blackHole.radius) {
-                    this.init();
-                    this.distance = Math.max(w, h) * 0.7;
-                }
-
-                // X ve Y konumlarını hesapla
-                this.x = blackHole.x + Math.cos(this.angle) * this.distance;
-                this.y = blackHole.y + Math.sin(this.angle) * this.distance * 0.5; // 0.5 ile galaksiye eğim/derinlik verilir
-            }
-
-            draw() {
-                ctx.fillStyle = this.colorBase + this.alpha + ')';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new GalaxyParticle());
-        }
-
-        function animate() {
-            // İz efekti için hafif şeffaf siyah arka plan
-            ctx.fillStyle = 'rgba(2, 2, 8, 0.2)';
-            ctx.fillRect(0, 0, w, h);
-
-            // Galaksi parçacıklarını çiz
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+        function copyToClipboard() {
+            const accountNumber = "0x70034a784d852bb06de0f85514f76269b255df9c";
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                alert("Hesap numarası panoya kopyalandı!");
+            }).catch(err => {
+                console.error('Kopyalama başarısız oldu:', err);
             });
-
-            // Kara Delik Akresyon Diski (Dış ışıma)
-            const gradient = ctx.createRadialGradient(
-                blackHole.x, blackHole.y, blackHole.radius * 0.8,
-                blackHole.x, blackHole.y, blackHole.radius * 2.5
-            );
-            gradient.addColorStop(0, 'rgba(255, 200, 120, 0.9)');
-            gradient.addColorStop(0.3, 'rgba(180, 70, 255, 0.5)');
-            gradient.addColorStop(0.7, 'rgba(0, 180, 255, 0.2)');
-            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(blackHole.x, blackHole.y, blackHole.radius * 2.5, 0, Math.PI * 2);
-            ctx.fill();
-
-            // Kara Delik Merkez Gölgesi (Olay Ufku)
-            ctx.fillStyle = '#000000';
-            ctx.beginPath();
-            ctx.arc(blackHole.x, blackHole.y, blackHole.radius, 0, Math.PI * 2);
-            ctx.fill();
-
-            requestAnimationFrame(animate);
         }
-
-        animate();
     </script>
+
 </body>
 </html>
