@@ -108,4 +108,12 @@
     </script>
 
 </body>
-</html>
+</html> 
+<div id="counter" style="font-size: 2em; font-weight: bold; text-align: center;">0 kişi girdi</div>
+<script>
+let count = localStorage.getItem('visitorCount') || 0;
+count++;
+localStorage.setItem('visitorCount', count);
+document.getElementById('counter').innerText = count + ' kişi girdi';
+</script>
+
