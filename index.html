@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -72,11 +71,6 @@
 </head>
 <body>
 
-  <div id="counter_container" style="text-align: center; position: absolute; top: 20px; width: 100%;">
-    <div id="counter" style="font-size: 2em; font-weight: bold; color: #ffffff;">0 kişi girdi</div>
-    <div id="counter_note" style="font-size: 1em; color: #ff0000; margin-top: 5px;">*Bu siteye günde kaç kişi girmiş</div>
-  </div>
-
   <div class="container">
     <div class="motto">
       "Geleceğin zekasını bugünden şekillendiriyoruz"
@@ -109,11 +103,6 @@
         console.error('Kopyalama başarısız oldu:', err);
       });
     }
-
-    let count = localStorage.getItem('visitorCount') || 0;
-    count++;
-    localStorage.setItem('visitorCount', count);
-    document.getElementById('counter').innerText = count + ' kişi girdi';
   </script>
 </body>
 </html>
