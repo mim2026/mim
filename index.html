@@ -2,76 +2,118 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hesap Numarasını Kopyala</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #0d0d1a;
-            color: #ffffff;
-            text-align: center;
-        }
-        .container {
-            background-color: #1a1a2e;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
-            max-width: 90%;
-        }
-        .motto {
-            font-size: 1.2rem;
-            color: #00d2ff;
-            margin-bottom: 20px;
-            font-style: italic;
-            font-weight: 300;
-        }
-        .address-box {
-            background-color: #0d0d1a;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px auto 10px;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 1rem;
-            color: #00d2ff;
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            max-width: 400px;
-        }
-        .account-type {
-            font-size: 1rem;
-            color: #8a99ad;
-            margin-bottom: 10px;
-        }
-        .disclaimer {
-            font-size: 0.9rem;
-            color: #5c6c80;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-        button {
-            background-color: #00d2ff;
-            border: none;
-            color: #000000;
-            padding: 15px 30px;
-            font-size: 1.1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        button:hover {
-            background-color: #ffffff;
-            box-shadow: 0 0 15px #00d2ff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hesap Numarasını Kopyala</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #0d0d1a;
+      color: #ffffff;
+      text-align: center;
+    }
+    .container {
+      background-color: #1a1a2e;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+      max-width: 90%;
+    }
+    .motto {
+      font-size: 1.2rem;
+      color: #00d2ff;
+      margin-bottom: 20px;
+      font-style: italic;
+      font-weight: 300;
+    }
+    .address-box {
+      background-color: #0d0d1a;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px auto 10px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #00d2ff;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      max-width: 400px;
+    }
+    .account-type {
+      font-size: 1rem;
+      color: #8a99ad;
+      margin-bottom: 10px;
+    }
+    .disclaimer {
+      font-size: 0.9rem;
+      color: #5c6c80;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #00d2ff;
+      border: none;
+      color: #000000;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #ffffff;
+      box-shadow: 0 0 15px #00d2ff;
+    }
+  </style>
 </head>
 <body>
-    
 
-    
+  <div id="counter_container" style="text-align: center; position: absolute; top: 20px; width: 100%;">
+    <div id="counter" style="font-size: 2em; font-weight: bold; color: #ffffff;">0 kişi girdi</div>
+    <div id="counter_note" style="font-size: 1em; color: #ff0000; margin-top: 5px;">*Bu siteye günde kaç kişi girmiş</div>
+  </div>
+
+  <div class="container">
+    <div class="motto">
+      "Geleceğin zekasını bugünden şekillendiriyoruz"
+    </div>
+
+    <h2>Destek Hesabı</h2>
+    <p>Aşağıdaki butona basarak hesap numarasını otomatik olarak kopyalayabilirsiniz.</p>
+
+    <div class="address-box">
+      0x70034a784d852bb06de0f85514f76269b255df9c
+    </div>
+
+    <div class="account-type">
+      Robin Hood Yatırım Hesabı
+    </div>
+
+    <div class="disclaimer">
+      Yapılan destekler bu sitede yayınlanacaktır ve bu site yapay zeka robotlarına aittir.
+    </div>
+
+    <button onclick="copyToClipboard()">Adresi Kopyala</button>
+  </div>
+
+  <script>
+    function copyToClipboard() {
+      const accountNumber = "0x70034a784d852bb06de0f85514f76269b255df9c";
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        alert("Hesap numarası panoya kopyalandı!");
+      }).catch(err => {
+        console.error('Kopyalama başarısız oldu:', err);
+      });
+    }
+
+    let count = localStorage.getItem('visitorCount') || 0;
+    count++;
+    localStorage.setItem('visitorCount', count);
+    document.getElementById('counter').innerText = count + ' kişi girdi';
+  </script>
+</body>
+</html>
