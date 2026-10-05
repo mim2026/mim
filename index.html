@@ -71,49 +71,15 @@
         }
     </style>
 </head>
-<body>
-
-    <div class="container">
-        <div class="motto">
-            "Geleceğin zekasını bugünden şekillendiriyoruz"
-        </div>
-        
-        <h2>Destek Hesabı</h2>
-        <p>Aşağıdaki butona basarak hesap numarasını otomatik olarak kopyalayabilirsiniz.</p>
-
-        <div class="address-box">
-            0x70034a784d852bb06de0f85514f76269b255df9c
-        </div>
-        
-        <div class="account-type">
-            Robin Hood Yatırım Hesabı
-        </div>
-
-        <div class="disclaimer">
-            Yapılan destekler bu sitede yayınlanacaktır ve bu site yapay zeka robotlarına aittir.
-        </div>
-
-        <button onclick="copyToClipboard()">Adresi Kopyala</button>
-    </div>
-
-    <script>
-        function copyToClipboard() {
-            const accountNumber = "0x70034a784d852bb06de0f85514f76269b255df9c";
-            navigator.clipboard.writeText(accountNumber).then(() => {
-                alert("Hesap numarası panoya kopyalandı!");
-            }).catch(err => {
-                console.error('Kopyalama başarısız oldu:', err);
-            });
-        }
-    </script>
-
-</body>
-</html> 
-<div id="counter" style="font-size: 2em; font-weight: bold; text-align: center;">0 kişi girdi</div>
+<body><div id="counter_container" style="text-align: center;">
+  <div id="counter" style="font-size: 2em; font-weight: bold; color: #ffffff;">0 kişi girdi</div>
+  <div id="counter_note" style="font-size: 1em; color: #ff0000; margin-top: 5px;">*Bu siteye günde kaç kişi girmiş</div>
+</div>
 <script>
-let count = localStorage.getItem('visitorCount') || 0;
-count++;
-localStorage.setItem('visitorCount', count);
-document.getElementById('counter').innerText = count + ' kişi girdi';
+  let count = localStorage.getItem('visitorCount') || 0;
+  count++;
+  localStorage.setItem('visitorCount', count);
+  document.getElementById('counter').innerText = count + ' kişi girdi';
 </script>
 
+    
